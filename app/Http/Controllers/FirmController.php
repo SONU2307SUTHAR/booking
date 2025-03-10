@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Firm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FirmController extends Controller
 {
@@ -13,6 +14,7 @@ class FirmController extends Controller
     public function index()
     {
         //
+        return "yeeeeeeeeee";
     }
 
     /**
@@ -21,6 +23,7 @@ class FirmController extends Controller
     public function create()
     {
         //
+        return view("firm.create");
     }
 
     /**
@@ -28,7 +31,26 @@ class FirmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $info=[
+            'firm_name'=>$request->firm_name,
+            'firm_mobile'=>$request->firm_mobile,
+            'pincode'=>$request->pincode,
+            'since'=>$request->since,
+            'street'=>$request->street,
+            'landmark'=>$request->landmark,
+            'address'=>$request->address,
+            'city'=>$request->city,
+            'state'=>$request->state,
+            'country'=>$request->country,
+            'pan_no'=>$request->pan_no,
+            // 'map'=>$request->map,
+            'register_no'=>$request->register_no,
+            'gst_no'=>$request->gst_no,
+            // 'prpfilepic'=>$request->profilepic,
+            'user_id'=>Auth::user()->id
+        ];
+        Firm::create($info);
+        
     }
 
     /**

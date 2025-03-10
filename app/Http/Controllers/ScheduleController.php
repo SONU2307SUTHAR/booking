@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Firm;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,11 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        if($firm_id=request('firm_id')){
+            $firm=Firm::find($firm_id); //firm ka data uthane k liye
+            return view("firm.schedule",compact('firm'));
+        }
+        return abort('404');
     }
 
     /**

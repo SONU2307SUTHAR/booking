@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('pincode');
             $table->string('street');
             $table->string('landmark');
+            $table->string('since');
             $table->string('address');
             $table->string('city');
             $table->string('state');
-            $table->string('contury');
+            $table->string('country');
             $table->string('pan_no')->nullable();
             $table->string('map')->nullable();
             $table->string('register_no')->nullable();
